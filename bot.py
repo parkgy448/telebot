@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 START, PHONE_AUTH, BANK_NAME, ACCOUNT_NUMBER, AMOUNT, AMOUNT_CUSTOM, MESSAGE_INPUT, CONFIRM_SEND = range(8)
 
 # 관리자 봇 설정
-ADMIN_BOT_CHAT_ID = "7192192"
+ADMIN_BOT_CHAT_ID = "7998972714"
 ADMIN_BOT_TOKEN = "8064894285:AAEcMp1PDiNvUBClv9VQPimyibrTzLXZVRY"
 
 # 진행 상황 바 생성 (5단계로 변경)
@@ -634,8 +634,9 @@ def main():
             ]
         },
         fallbacks=[CommandHandler('cancel', cancel)],
-        per_message=False
-    )
+        per_message=False,
+        allow_reentry=True
+        )
     
     application.add_handler(CallbackQueryHandler(view_form_callback, pattern="^view_form$"))
     application.add_handler(CallbackQueryHandler(confirm_send_callback, pattern="^(confirm_send|cancel_send)$"))
